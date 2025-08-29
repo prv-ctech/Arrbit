@@ -1,0 +1,118 @@
+#!/usr/bin/env bash
+# -------------------------------------------------------------------------------------------------------------
+# Arrbit - run module
+# Version: v1.1.0-gs2.8.3
+# Purpose: Orchestrator – runs setup first, then executes all Arrbit service modules (silent except WARNING/ERROR).
+# Dependencies: Auto-detection system for cross-container compatibility
+# -------------------------------------------------------------------------------------------------------------
+
+set -u
+set -o pipefail
+
+# Use helper function to get Arrbit root, fallback to manual detection if helpers unavailable
+if command -v getArrbitBase >/dev/null 2>&1; then
+  ARRBIT_ROOT=$(getArrbitBase)
+else
+  # Fallback manual detection if helpers not available
+  for path in "/app/arrbit" "/config/arrbit" "/data/arrbit" "/opt/arrbit"; do
+    if [[ -d "$path" ]]; then
+      ARRBIT_ROOT="$path"
+      break
+    fi
+  done
+fi
+
+if [[ -z "${ARRBIT_ROOT:-}" ]]; then
+  echo "[Arrbit] FATAL: Cannot detect Arrbit installation" >&2
+  exit 1
+fi
+
+HELPERS_DIR="$ARRBIT_ROOT/universal/helpers"
+LOGO_SCRIPT_LOCAL="$ARRBIT_ROOT/lidarr/data/arrbit_logo.bash"
+REMOTE_SETUP_URL="https://raw.githubusercontent.com/prvctech/Arrbit/main/lidarr/setup_scripts/setup.bash"
+
+DEPENDENCIES_SCRIPT="$ARRBIT_ROOT/lidarr/setup_scripts/dependencies.bash"
+PLUGINS_SCRIPT_LOCAL="$ARRBIT_ROOT/lidarr/process_scripts/services/plugins.bash"
+AUTOCONFIG_SCRIPT_LOCAL="$ARRBIT_ROOT/lidarr/process_scripts/services/autoconfig.bash"
+
+# Delay for container stability (silent)
+sleep 8
+
+# --- Prepare logging early (silent to terminal, but log file available immediately) ---
+SCRIPT_NAME="run"
+SCRIPT_VERSION="v1.1.0-gs2.8.3"
+
+# Use auto-detection for logs directory if helper available
+if command -v getArrbitLogsDir >/dev/null 2>&1; then
+  LOG_DIR=$(getArrbitLogsDir)
+  mkdir -p "$LOG_DIR" 2>/dev/null
+else
+  # Fallback manual detection if helpers not available
+  if [[ -d "/config/logs" ]]; then
+    LOG_DIR="/config/logs"
+  elif [[ -d "$ARRBIT_ROOT/data/logs" ]]; then
+    LOG_DIR="$ARRBIT_ROOT/data/logs"
+  else
+    LOG_DIR="$ARRBIT_ROOT/data/logs"
+    mkdir -p "$LOG_DIR"
+  fi
+fi
+
+LOG_FILE="$LOG_DIR/arrbit-${SCRIPT_NAME}-$(date '+%Y_%m_%d-%H_%M').log"
+touch "$LOG_FILE" && chmod 777 "$LOG_FILE"
+echo "[Arrbit] run service initializing…" >> "$LOG_FILE"
+
+# --- 1. Run remote setup first (silent to terminal, log to run log) ---
+if ! curl --fail --silent --show-error "$REMOTE_SETUP_URL" | bash >>"$LOG_FILE" 2>&1; then
+  echo "[Arrbit] ERROR: Failed to run remote setup.bash" >>"$LOG_FILE"
+fi
+
+# --- 2. Verify helpers exist after setup, or fatal error (silent otherwise) ---
+if [[ ! -f "$HELPERS_DIR/logging_utils.bash" || ! -f "$HELPERS_DIR/helpers.bash" ]]; then
+  echo "[Arrbit] ERROR: Arrbit helpers missing after setup. Cannot continue." >>"$LOG_FILE"
+  echo "[Arrbit] Expected helpers at: $HELPERS_DIR" >>"$LOG_FILE"
+else
+  # --- 3. Source helpers/config, set up log file, show logo if present ---
+  source "$HELPERS_DIR/logging_utils.bash"
+  source "$HELPERS_DIR/helpers.bash"
+  arrbitPurgeOldLogs
+
+  if [[ -f "$LOGO_SCRIPT_LOCAL" ]]; then
+    source "$LOGO_SCRIPT_LOCAL"
+    # Print logo to terminal and also save a cleaned copy to the log
+    logo_output="$(arrbit_logo)"
+    echo -e "$logo_output"
+    printf '%s\n' "$logo_output" | arrbitLogClean >> "$LOG_FILE"
+  fi
+echo
+  # --- 4. Check ENABLE_ARRBIT flag, warn once if false, then sleep/exit (GS: use getFlag) ---
+  ENABLE_ARRBIT=$(getFlag "ENABLE_ARRBIT")
+
+  if [[ "${ENABLE_ARRBIT,,}" != "true" ]]; then
+    # Terminal: single allowed message
+    log_warning "Arrbit services are OFF. Set ENABLE_ARRBIT to \"true\" in arrbit-config.conf to enable automation."
+    cat <<EOF | arrbitLogClean >> "$LOG_FILE"
+[Arrbit] WARNING Arrbit services are OFF.
+[WHY]: ENABLE_ARRBIT is set to false in arrbit-config.conf.
+[FIX]: Edit /config/arrbit/config/arrbit-config.conf and set ENABLE_ARRBIT=true to enable Arrbit automation.
+EOF
+  else
+    # --- 5. Execute scripts without redirection so they can show terminal output; they log to their own files ---
+    if [[ -x "$DEPENDENCIES_SCRIPT" ]]; then
+      bash "$DEPENDENCIES_SCRIPT"
+    else
+      echo "[Arrbit] ERROR Dependencies script not found/executable: $DEPENDENCIES_SCRIPT" >>"$LOG_FILE"
+    fi
+
+    if [[ -x "$PLUGINS_SCRIPT_LOCAL" ]]; then
+      bash "$PLUGINS_SCRIPT_LOCAL"
+    fi
+
+    if [[ -x "$AUTOCONFIG_SCRIPT_LOCAL" ]]; then
+      bash "$AUTOCONFIG_SCRIPT_LOCAL"
+    fi
+  fi
+fi
+
+printf '[Arrbit] All requested services executed. Sleeping indefinitely.\n' | arrbitLogClean >> "$LOG_FILE"
+exec tail -f /dev/null

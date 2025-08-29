@@ -1,0 +1,65 @@
+[
+  {
+    "onGrab": false,
+    "onReleaseImport": true,
+    "onUpgrade": true,
+    "onRename": true,
+    "onArtistAdd": false,
+    "onArtistDelete": false,
+    "onAlbumDelete": false,
+    "onHealthIssue": false,
+    "onHealthRestored": false,
+    "onDownloadFailure": false,
+    "onImportFailure": false,
+    "onTrackRetag": false,
+    "onApplicationUpdate": false,
+    "supportsOnGrab": true,
+    "supportsOnReleaseImport": true,
+    "supportsOnUpgrade": true,
+    "supportsOnRename": true,
+    "supportsOnArtistAdd": true,
+    "supportsOnArtistDelete": true,
+    "supportsOnAlbumDelete": true,
+    "supportsOnHealthIssue": true,
+    "supportsOnHealthRestored": true,
+    "includeHealthWarnings": false,
+    "supportsOnDownloadFailure": false,
+    "supportsOnImportFailure": false,
+    "supportsOnTrackRetag": true,
+    "supportsOnApplicationUpdate": true,
+    "name": "tagger",
+    "fields": [
+      {
+        "order": 0,
+        "name": "path",
+        "label": "Path",
+        "value": "/config/arrbit/custom/tagger.bash",
+        "type": "filePath",
+        "advanced": false,
+        "privacy": "normal",
+        "isFloat": false
+      },
+      {
+        "order": 1,
+        "name": "arguments",
+        "label": "Arguments",
+        "helpText": "Arguments to pass to the script",
+        "type": "textbox",
+        "advanced": false,
+        "hidden": "hiddenIfNotSet",
+        "privacy": "normal",
+        "isFloat": false
+      }
+    ],
+    "implementationName": "Custom Script",
+    "implementation": "CustomScript",
+    "configContract": "CustomScriptSettings",
+    "infoLink": "https://wiki.servarr.com/lidarr/supported#customscript",
+    "message": {
+      "message": "Testing will execute the script with the EventType set to Test, ensure your script handles this correctly",
+      "type": "warning"
+    },
+    "tags": [],
+    "id": 1
+  }
+]

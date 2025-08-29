@@ -1,0 +1,451 @@
+[
+  {
+    "quality": {
+      "id": 0,
+      "name": "Unknown"
+    },
+    "title": "Unknown",
+    "weight": 1,
+    "minSize": 112,
+    "maxSize": 350,
+    "preferredSize": 195,
+    "id": 1
+  },
+  {
+    "quality": {
+      "id": 32,
+      "name": "MP3-8"
+    },
+    "title": "MP3-8",
+    "weight": 2,
+    "minSize": 3,
+    "maxSize": 12,
+    "preferredSize": 8,
+    "id": 2
+  },
+  {
+    "quality": {
+      "id": 31,
+      "name": "MP3-16"
+    },
+    "title": "MP3-16",
+    "weight": 3,
+    "minSize": 10,
+    "maxSize": 20,
+    "preferredSize": 15,
+    "id": 3
+  },
+  {
+    "quality": {
+      "id": 30,
+      "name": "MP3-24"
+    },
+    "title": "MP3-24",
+    "weight": 4,
+    "minSize": 19,
+    "maxSize": 30,
+    "preferredSize": 25,
+    "id": 4
+  },
+  {
+    "quality": {
+      "id": 29,
+      "name": "MP3-32"
+    },
+    "title": "MP3-32",
+    "weight": 5,
+    "minSize": 27,
+    "maxSize": 40,
+    "preferredSize": 35,
+    "id": 5
+  },
+  {
+    "quality": {
+      "id": 28,
+      "name": "MP3-40"
+    },
+    "title": "MP3-40",
+    "weight": 6,
+    "minSize": 35,
+    "maxSize": 45,
+    "preferredSize": 40,
+    "id": 6
+  },
+  {
+    "quality": {
+      "id": 27,
+      "name": "MP3-48"
+    },
+    "title": "MP3-48",
+    "weight": 7,
+    "minSize": 43,
+    "maxSize": 55,
+    "preferredSize": 50,
+    "id": 7
+  },
+  {
+    "quality": {
+      "id": 26,
+      "name": "MP3-56"
+    },
+    "title": "MP3-56",
+    "weight": 8,
+    "minSize": 50,
+    "maxSize": 65,
+    "preferredSize": 60,
+    "id": 8
+  },
+  {
+    "quality": {
+      "id": 25,
+      "name": "MP3-64"
+    },
+    "title": "MP3-64",
+    "weight": 9,
+    "minSize": 59,
+    "maxSize": 75,
+    "preferredSize": 70,
+    "id": 9
+  },
+  {
+    "quality": {
+      "id": 24,
+      "name": "MP3-80"
+    },
+    "title": "MP3-80",
+    "weight": 10,
+    "minSize": 75,
+    "maxSize": 100,
+    "preferredSize": 90,
+    "id": 10
+  },
+  {
+    "quality": {
+      "id": 23,
+      "name": "MP3-96"
+    },
+    "title": "MP3-96",
+    "weight": 11,
+    "minSize": 85,
+    "maxSize": 110,
+    "preferredSize": 95,
+    "id": 11
+  },
+  {
+    "quality": {
+      "id": 33,
+      "name": "MP3-112"
+    },
+    "title": "MP3-112",
+    "weight": 12,
+    "minSize": 85,
+    "maxSize": 125,
+    "preferredSize": 112,
+    "id": 12
+  },
+  {
+    "quality": {
+      "id": 22,
+      "name": "MP3-128"
+    },
+    "title": "MP3-128",
+    "weight": 13,
+    "minSize": 112,
+    "maxSize": 200,
+    "preferredSize": 128,
+    "id": 13
+  },
+  {
+    "quality": {
+      "id": 19,
+      "name": "OGG Vorbis Q5"
+    },
+    "title": "OGG Vorbis Q5",
+    "weight": 14,
+    "minSize": 112,
+    "maxSize": 200,
+    "preferredSize": 160,
+    "id": 14
+  },
+  {
+    "quality": {
+      "id": 5,
+      "name": "MP3-160"
+    },
+    "title": "MP3-160",
+    "weight": 14,
+    "minSize": 128,
+    "maxSize": 250,
+    "preferredSize": 160,
+    "id": 15
+  },
+  {
+    "quality": {
+      "id": 1,
+      "name": "MP3-192"
+    },
+    "title": "MP3-192",
+    "weight": 15,
+    "minSize": 160,
+    "maxSize": 300,
+    "preferredSize": 192,
+    "id": 16
+  },
+  {
+    "quality": {
+      "id": 18,
+      "name": "OGG Vorbis Q6"
+    },
+    "title": "OGG Vorbis Q6",
+    "weight": 15,
+    "minSize": 128,
+    "maxSize": 250,
+    "preferredSize": 185,
+    "id": 17
+  },
+  {
+    "quality": {
+      "id": 9,
+      "name": "AAC-192"
+    },
+    "title": "AAC-192",
+    "weight": 15,
+    "minSize": 160,
+    "maxSize": 250,
+    "preferredSize": 192,
+    "id": 18
+  },
+  {
+    "quality": {
+      "id": 20,
+      "name": "WMA"
+    },
+    "title": "WMA",
+    "weight": 15,
+    "minSize": 160,
+    "maxSize": 800,
+    "preferredSize": 195,
+    "id": 19
+  },
+  {
+    "quality": {
+      "id": 34,
+      "name": "MP3-224"
+    },
+    "title": "MP3-224",
+    "weight": 16,
+    "minSize": 190,
+    "maxSize": 250,
+    "preferredSize": 224,
+    "id": 20
+  },
+  {
+    "quality": {
+      "id": 17,
+      "name": "OGG Vorbis Q7"
+    },
+    "title": "OGG Vorbis Q7",
+    "weight": 17,
+    "minSize": 160,
+    "maxSize": 350,
+    "preferredSize": 210,
+    "id": 21
+  },
+  {
+    "quality": {
+      "id": 8,
+      "name": "MP3-VBR-V2"
+    },
+    "title": "MP3-VBR-V2",
+    "weight": 18,
+    "minSize": 160,
+    "maxSize": 600,
+    "preferredSize": 190,
+    "id": 22
+  },
+  {
+    "quality": {
+      "id": 3,
+      "name": "MP3-256"
+    },
+    "title": "MP3-256",
+    "weight": 18,
+    "minSize": 192,
+    "maxSize": 500,
+    "preferredSize": 256,
+    "id": 23
+  },
+  {
+    "quality": {
+      "id": 16,
+      "name": "OGG Vorbis Q8"
+    },
+    "title": "OGG Vorbis Q8",
+    "weight": 18,
+    "minSize": 190,
+    "maxSize": 500,
+    "preferredSize": 245,
+    "id": 24
+  },
+  {
+    "quality": {
+      "id": 10,
+      "name": "AAC-256"
+    },
+    "title": "AAC-256",
+    "weight": 18,
+    "minSize": 192,
+    "maxSize": 400,
+    "preferredSize": 256,
+    "id": 25
+  },
+  {
+    "quality": {
+      "id": 2,
+      "name": "MP3-VBR-V0"
+    },
+    "title": "MP3-VBR-V0",
+    "weight": 19,
+    "minSize": 192,
+    "maxSize": 850,
+    "preferredSize": 256,
+    "id": 26
+  },
+  {
+    "quality": {
+      "id": 12,
+      "name": "AAC-VBR"
+    },
+    "title": "AAC-VBR",
+    "weight": 19,
+    "minSize": 190,
+    "maxSize": 500,
+    "preferredSize": 195,
+    "id": 27
+  },
+  {
+    "quality": {
+      "id": 4,
+      "name": "MP3-320"
+    },
+    "title": "MP3-320",
+    "weight": 20,
+    "minSize": 256,
+    "maxSize": 800,
+    "preferredSize": 320,
+    "id": 28
+  },
+  {
+    "quality": {
+      "id": 15,
+      "name": "OGG Vorbis Q9"
+    },
+    "title": "OGG Vorbis Q9",
+    "weight": 20,
+    "minSize": 256,
+    "maxSize": 700,
+    "preferredSize": 320,
+    "id": 29
+  },
+  {
+    "quality": {
+      "id": 11,
+      "name": "AAC-320"
+    },
+    "title": "AAC-320",
+    "weight": 20,
+    "minSize": 256,
+    "maxSize": 800,
+    "preferredSize": 320,
+    "id": 30
+  },
+  {
+    "quality": {
+      "id": 14,
+      "name": "OGG Vorbis Q10"
+    },
+    "title": "OGG Vorbis Q10",
+    "weight": 21,
+    "minSize": 320,
+    "maxSize": 850,
+    "preferredSize": 395,
+    "id": 31
+  },
+  {
+    "quality": {
+      "id": 6,
+      "name": "FLAC"
+    },
+    "title": "FLAC",
+    "weight": 22,
+    "minSize": 890,
+    "preferredSize": 895,
+    "id": 32
+  },
+  {
+    "quality": {
+      "id": 7,
+      "name": "ALAC"
+    },
+    "title": "ALAC",
+    "weight": 22,
+    "minSize": 890,
+    "preferredSize": 895,
+    "id": 33
+  },
+  {
+    "quality": {
+      "id": 35,
+      "name": "APE"
+    },
+    "title": "APE",
+    "weight": 22,
+    "minSize": 890,
+    "preferredSize": 1350,
+    "id": 34
+  },
+  {
+    "quality": {
+      "id": 36,
+      "name": "WavPack"
+    },
+    "title": "WavPack",
+    "weight": 22,
+    "minSize": 890,
+    "preferredSize": 1350,
+    "id": 35
+  },
+  {
+    "quality": {
+      "id": 21,
+      "name": "FLAC 24bit"
+    },
+    "title": "FLAC 24bit",
+    "weight": 23,
+    "minSize": 890,
+    "preferredSize": 1350,
+    "id": 36
+  },
+  {
+    "quality": {
+      "id": 37,
+      "name": "ALAC 24bit"
+    },
+    "title": "ALAC 24bit",
+    "weight": 23,
+    "minSize": 890,
+    "preferredSize": 1350,
+    "id": 37
+  },
+  {
+    "quality": {
+      "id": 13,
+      "name": "WAV"
+    },
+    "title": "WAV",
+    "weight": 24,
+    "minSize": 890,
+    "preferredSize": 895,
+    "id": 38
+  }
+]

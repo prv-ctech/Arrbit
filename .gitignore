@@ -1,0 +1,212 @@
+# Arrbit Project .gitignore
+# Focused .gitignore for bash/Python automation project
+
+# ===========================================
+# Operating System Files
+# ===========================================
+
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+
+# ===========================================
+# Development Environment & IDEs
+# ===========================================
+
+# VS Code
+.vscode/
+*.code-workspace
+.history/
+
+# JetBrains IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# Vim
+*.swp
+*.swo
+*~
+
+# ===========================================
+# Python
+# ===========================================
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# PEP 582
+__pypackages__/
+
+# ===========================================
+# Bash/Shell Scripts
+# ===========================================
+
+# Bash history
+.bash_history
+
+# Shell scripts
+*.sh.tmp
+*.bash.tmp
+
+# ===========================================
+# Logs and Temporary Files
+# ===========================================
+
+# General logs
+*.log
+logs/
+log/
+
+# Temporary files
+*.tmp
+*.temp
+.tmp/
+temp/
+tmp/
+
+# Backup files
+*.bak
+*.backup
+*.orig
+*.rej
+
+# ===========================================
+# Secrets and Credentials
+# ===========================================
+
+# API keys, passwords, secrets
+.env
+.env.local
+.env.*.local
+.secrets
+
+# SSH keys
+*.pem
+*.key
+*.p12
+*.pfx
+
+# ===========================================
+# GitHub Specific (as requested)
+# ===========================================
+
+.github/
+!.github/workflows/
+!.github/ISSUE_TEMPLATE/
+!.github/PULL_REQUEST_TEMPLATE/
+
+
+# Downloaded archives
+*.zip
+*.tar.gz
+*.7z
+
+# ===========================================
+# Archives and Compressed Files
+# ===========================================
+
+# Archives
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Images (if not needed in repo)
+*.jpg
+*.jpeg
+*.png
+*.gif
+*.bmp
+*.tiff
+*.ico
+
+# Videos
+*.mp4
+*.avi
+*.mov
+*.wmv
+
+# Audio
+*.mp3
+*.wav
+*.flac
