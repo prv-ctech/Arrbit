@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Execute remote setup.bash from development branch
+curl -s https://raw.githubusercontent.com/prv-ctech/Arrbit/refs/heads/development/tdarr/scripts/setup/setup.bash | bash
+
+# Check if setup.bash ran successfully
+if [ $? -eq 0 ]; then
+    echo "setup.bash ran successfully"
+    
+    # Proceed to run dependencies.bash locally
+    bash /app/arrbit/scripts/setup/dependencies.bash
+else
+    echo "setup.bash failed"
+    exit 1
+fi
