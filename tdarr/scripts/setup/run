@@ -1,23 +1,38 @@
 #!/bin/bash
+# Tdarr Run Script
+# Version: v1.0.0-gs3.2.1
+# Purpose: Bootstrap orchestrator for Tdarr setup
 
 set -euo pipefail
 
-# Check if already set up to prevent loops
-if [ -d /app/arrbit ]; then
-    echo "Arrbit already set up"
-    exit 0
-fi
+# Script metadata (REQUIRED)
+SCRIPT_NAME="run"
+SCRIPT_VERSION="v1.0.0-gs3.2.1"
+
+# Minimal bootstrap logging (no helpers sourced - UNIVERSAL REQUIREMENT)
+readonly LOG_DIR="/app/arrbit/logs"
+
+# Create log directory (bootstrap requirement)
+mkdir -p "$LOG_DIR"
+
+readonly LOG_FILE="$LOG_DIR/arrbit-${SCRIPT_NAME}-info-$(date -u +%Y_%m_%d-%H_%M).log"
+
+log_info() { printf '%s [INFO] %s\n' "$(date -u +'%Y-%m-%dT%H:%M:%SZ')" "$*" >>"${LOG_FILE}"; }
+log_error() { printf '%s [ERROR] %s\n' "$(date -u +'%Y-%m-%dT%H:%M:%SZ')" "$*" >>"${LOG_FILE}"; }
+
+log_info "Starting run script"
 
 # Execute remote setup.bash from development branch
-curl -s https://raw.githubusercontent.com/prv-ctech/Arrbit/refs/heads/development/tdarr/scripts/setup/setup.bash | bash
-
-# Check if setup.bash ran successfully
-if [ $? -eq 0 ]; then
-    echo "setup.bash ran successfully"
+if curl -s https://raw.githubusercontent.com/prv-ctech/Arrbit/refs/heads/development/tdarr/scripts/setup/setup.bash | bash; then
+    log_info "setup.bash ran successfully"
     
     # Proceed to run dependencies.bash locally
+    log_info "Running dependencies"
     bash /app/arrbit/scripts/setup/dependencies.bash
+    log_info "Dependencies completed"
 else
-    echo "setup.bash failed"
-    exit 1
+    log_error "setup.bash failed"
+    exit 1  # FAIL-FAST: Must exit 1 on failure
 fi
+
+log_info "Run script completed"
