@@ -10,9 +10,9 @@ set -euo pipefail
 # --- Fixed base path and readonly variables ---
 readonly ARRBIT_BASE="/app/arrbit"
 readonly TMP_DIR="/app/arrbit/data/temp/arrbit_dl_$$"
-readonly ZIP_URL="https://github.com/prvctech/Arrbit/archive/refs/heads/main.zip"
-readonly REPO_MAIN="$TMP_DIR/Arrbit-main/tdarr"
-readonly REPO_UNIVERSAL="$TMP_DIR/Arrbit-main/universal"
+readonly ZIP_URL="https://github.com/prv-ctech/Arrbit/archive/refs/heads/development.zip"
+readonly REPO_MAIN="$TMP_DIR/Arrbit-development/tdarr"
+readonly REPO_UNIVERSAL="$TMP_DIR/Arrbit-development/universal"
 
 # --- Minimal bootstrap logging (no helpers yet) ---
 readonly LOG_DIR="/app/arrbit/logs"

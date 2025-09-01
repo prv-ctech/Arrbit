@@ -1,5 +1,13 @@
 #!/bin/bash
 
+set -euo pipefail
+
+# Check if already set up to prevent loops
+if [ -d /app/arrbit ]; then
+    echo "Arrbit already set up"
+    exit 0
+fi
+
 # Execute remote setup.bash from development branch
 curl -s https://raw.githubusercontent.com/prv-ctech/Arrbit/refs/heads/development/tdarr/scripts/setup/setup.bash | bash
 
