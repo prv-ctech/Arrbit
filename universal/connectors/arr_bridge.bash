@@ -6,7 +6,7 @@
 # -------------------------------------------------------------------------------------------------------------
 
 # Fixed base path and security-first initialization
-readonly ARRBIT_BASE="${ARRBIT_BASE:-/app/arrbit}"
+ARRBIT_BASE="${ARRBIT_BASE:-/app/arrbit}"
 source "$ARRBIT_BASE/universal/helpers/logging_utils.bash" || exit 1
 source "$ARRBIT_BASE/universal/helpers/helpers.bash" || exit 1
 
@@ -21,7 +21,7 @@ arrbitInitLog "$LOG_FILE" || { log_error "Could not initialize log file"; exit 1
 arrbitBanner "$SCRIPT_NAME" "$SCRIPT_VERSION"
 
 # Configuration validation (fail fast, no fallbacks)
-readonly CONFIG_XML="/config/config.xml"
+CONFIG_XML="/config/config.xml"
 [[ -f "$CONFIG_XML" ]] || { log_error "ARR config.xml not found"; exit 1; }
 
 # Extract and validate ARR configuration
@@ -39,14 +39,14 @@ arr_port="$(cat "$CONFIG_XML" | xq | jq -r .Config.Port)"
 [[ -z "$arr_port" || "$arr_port" == "null" ]] && { log_error "API port not found"; exit 1; }
 
 # Build API URL (no overrides, fail fast)
-readonly arrUrl="http://127.0.0.1:${arr_port}${arr_url_base}"
-readonly arrApiKey="$arr_api_key"
+arrUrl="http://127.0.0.1:${arr_port}${arr_url_base}"
+arrApiKey="$arr_api_key"
 
 # API version detection (try v3 first, then v1 for Lidarr compatibility)
-readonly arrApiVersion="v3"
+arrApiVersion="v3"
 response="$(curl -s --fail -H "X-Api-Key: $arrApiKey" "${arrUrl}/api/v3/system/status" 2>/dev/null)" || {
   # Fallback to v1 for Lidarr compatibility
-  readonly arrApiVersion="v1"
+  arrApiVersion="v1"
   response="$(curl -s --fail -H "X-Api-Key: $arrApiKey" "${arrUrl}/api/v1/system/status" 2>/dev/null)" || \
   { log_error "Could not connect to ARR API (neither v3 nor v1)"; exit 1; }
 }

@@ -7,16 +7,16 @@
 
 set -euo pipefail
 
-# --- Fixed base path and readonly variables ---
-readonly ARRBIT_BASE="/app/arrbit"
-readonly TMP_DIR="/app/arrbit/data/temp/arrbit_dl_$$"
-readonly ZIP_URL="https://github.com/prv-ctech/Arrbit/archive/refs/heads/development.zip"
-readonly REPO_MAIN="$TMP_DIR/Arrbit-development/tdarr"
-readonly REPO_UNIVERSAL="$TMP_DIR/Arrbit-development/universal"
+# --- Fixed base path and variables ---
+ARRBIT_BASE="/app/arrbit"
+TMP_DIR="/app/arrbit/data/temp/arrbit_dl_$$"
+ZIP_URL="https://github.com/prv-ctech/Arrbit/archive/refs/heads/development.zip"
+REPO_MAIN="$TMP_DIR/Arrbit-development/tdarr"
+REPO_UNIVERSAL="$TMP_DIR/Arrbit-development/universal"
 
 # --- Minimal bootstrap logging (no helpers yet) ---
-readonly LOG_DIR="/app/arrbit/logs"
-readonly LOG_FILE="$LOG_DIR/arrbit-setup-info-$(date -u +%Y_%m_%d-%H_%M).log"
+LOG_DIR="/app/arrbit/logs"
+LOG_FILE="$LOG_DIR/arrbit-setup-info-$(date -u +%Y_%m_%d-%H_%M).log"
 
 log_info() { printf '%s [INFO] %s\n' "$(date -u +'%Y-%m-%dT%H:%M:%SZ')" "$*" >>"${LOG_FILE}"; }
 log_warning() { printf '%s [WARN] %s\n' "$(date -u +'%Y-%m-%dT%H:%M:%SZ')" "$*" >>"${LOG_FILE}"; }

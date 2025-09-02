@@ -6,16 +6,16 @@
 
 # Prevent multiple inclusions
 [[ -n "${ARRBIT_HELPERS_INCLUDED:-}" ]] && return 0
-readonly ARRBIT_HELPERS_INCLUDED=1
+ARRBIT_HELPERS_INCLUDED=1
 
 # Fixed base path configuration (security-first, no auto-detection)
-readonly ARRBIT_BASE="${ARRBIT_BASE:-/app/arrbit}"
-readonly ARRBIT_CONFIG_DIR="${ARRBIT_BASE}/config"
-readonly ARRBIT_DATA_DIR="${ARRBIT_BASE}/data" 
-readonly ARRBIT_LOGS_DIR="${ARRBIT_BASE}/logs"
-readonly ARRBIT_HELPERS_DIR="${ARRBIT_BASE}/universal/helpers"
-readonly ARRBIT_SCRIPTS_DIR="${ARRBIT_BASE}/scripts"
-readonly ARRBIT_ENVIRONMENTS_DIR="${ARRBIT_BASE}/environments"
+ARRBIT_BASE="${ARRBIT_BASE:-/app/arrbit}"
+ARRBIT_CONFIG_DIR="${ARRBIT_BASE}/config"
+ARRBIT_DATA_DIR="${ARRBIT_BASE}/data" 
+ARRBIT_LOGS_DIR="${ARRBIT_BASE}/logs"
+ARRBIT_HELPERS_DIR="${ARRBIT_BASE}/universal/helpers"
+ARRBIT_SCRIPTS_DIR="${ARRBIT_BASE}/scripts"
+ARRBIT_ENVIRONMENTS_DIR="${ARRBIT_BASE}/environments"
 
 # Export variables for scripts
 export ARRBIT_BASE ARRBIT_CONFIG_DIR ARRBIT_DATA_DIR ARRBIT_LOGS_DIR ARRBIT_HELPERS_DIR ARRBIT_SCRIPTS_DIR ARRBIT_ENVIRONMENTS_DIR

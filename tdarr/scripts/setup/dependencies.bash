@@ -11,8 +11,10 @@ set -euo pipefail
 SCRIPT_NAME="dependencies"
 SCRIPT_VERSION="v1.0.0-gs3.2.1"
 
-# Source helpers (fixed base path model)
+# Set base path before sourcing helpers
 ARRBIT_BASE="/app/arrbit"
+
+# Source helpers (ARRBIT_BASE is now defined)
 source "$ARRBIT_BASE/universal/helpers/logging_utils.bash"
 source "$ARRBIT_BASE/universal/helpers/helpers.bash"
 arrbitPurgeOldLogs # Always run first (retains newest 3 per script prefix)

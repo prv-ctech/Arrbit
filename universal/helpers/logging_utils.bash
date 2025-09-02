@@ -5,15 +5,15 @@
 # -------------------------------------------------------------------------------------------------------------
 
 # Fixed base path and required directories
-readonly ARRBIT_BASE="${ARRBIT_BASE:-/app/arrbit}"
-readonly ARRBIT_LOGS_DIR="${ARRBIT_BASE}/logs"
+ARRBIT_BASE="${ARRBIT_BASE:-/app/arrbit}"
+ARRBIT_LOGS_DIR="${ARRBIT_BASE}/logs"
 export ARRBIT_BASE ARRBIT_LOGS_DIR
 
 # Ensure log directory exists (fail fast if cannot create)
 mkdir -p "${ARRBIT_LOGS_DIR}" || exit 1
 
 # Simple color constants (terminal only)
-readonly CYAN='\033[96m' YELLOW='\033[93m' RED='\033[91m' GREEN='\033[92m' NC='\033[0m'
+CYAN='\033[96m' YELLOW='\033[93m' RED='\033[91m' GREEN='\033[92m' NC='\033[0m'
 
 # ------------------------------------------------
 # Core logging functions (RFC 5424 compliant levels)

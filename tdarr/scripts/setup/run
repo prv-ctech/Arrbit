@@ -10,12 +10,12 @@ SCRIPT_NAME="run"
 SCRIPT_VERSION="v1.0.0-gs3.2.1"
 
 # Minimal bootstrap logging (no helpers sourced - UNIVERSAL REQUIREMENT)
-readonly LOG_DIR="/app/arrbit/logs"
+LOG_DIR="/app/arrbit/logs"
 
 # Create log directory (bootstrap requirement)
 mkdir -p "$LOG_DIR"
 
-readonly LOG_FILE="$LOG_DIR/arrbit-${SCRIPT_NAME}-info-$(date -u +%Y_%m_%d-%H_%M).log"
+LOG_FILE="$LOG_DIR/arrbit-${SCRIPT_NAME}-info-$(date -u +%Y_%m_%d-%H_%M).log"
 
 log_info() { printf '%s [INFO] %s\n' "$(date -u +'%Y-%m-%dT%H:%M:%SZ')" "$*" >>"${LOG_FILE}"; }
 log_error() { printf '%s [ERROR] %s\n' "$(date -u +'%Y-%m-%dT%H:%M:%SZ')" "$*" >>"${LOG_FILE}"; }

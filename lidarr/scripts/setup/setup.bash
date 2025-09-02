@@ -7,16 +7,16 @@
 
 set -euo pipefail
 
-# --- Fixed base path and readonly variables ---
-readonly ARRBIT_BASE="/app/arrbit"
-readonly TMP_DIR="/app/arrbit/data/temp/arrbit_dl_$$"
-readonly ZIP_URL="https://github.com/prvctech/Arrbit/archive/refs/heads/main.zip"
-readonly REPO_MAIN="$TMP_DIR/Arrbit-main/lidarr"
-readonly REPO_UNIVERSAL="$TMP_DIR/Arrbit-main/universal"
+# --- Fixed base path and variables ---
+ARRBIT_BASE="/app/arrbit"
+TMP_DIR="/app/arrbit/data/temp/arrbit_dl_$$"
+ZIP_URL="https://github.com/prvctech/Arrbit/archive/refs/heads/main.zip"
+REPO_MAIN="$TMP_DIR/Arrbit-main/lidarr"
+REPO_UNIVERSAL="$TMP_DIR/Arrbit-main/universal"
 
 # --- Minimal bootstrap logging (no helpers yet) ---
-readonly LOG_DIR="/app/arrbit/logs"
-readonly LOG_FILE="$LOG_DIR/arrbit-setup-info-$(date -u +%Y_%m_%d-%H_%M).log"
+LOG_DIR="/app/arrbit/logs"
+LOG_FILE="$LOG_DIR/arrbit-setup-info-$(date -u +%Y_%m_%d-%H_%M).log"
 
 log_info() { printf '%s [INFO] %s\n' "$(date -u +'%Y-%m-%dT%H:%M:%SZ')" "$*" >>"${LOG_FILE}"; }
 log_warning() { printf '%s [WARN] %s\n' "$(date -u +'%Y-%m-%dT%H:%M:%SZ')" "$*" >>"${LOG_FILE}"; }
@@ -52,7 +52,7 @@ cp -r "$REPO_UNIVERSAL/helpers" "$ARRBIT_BASE/universal/"
 cp -r "$REPO_UNIVERSAL/connectors" "$ARRBIT_BASE/universal/"
 
 # --- Switch to Golden Standard logging ---
-readonly HELPERS_DIR="$ARRBIT_BASE/universal/helpers"
+HELPERS_DIR="$ARRBIT_BASE/universal/helpers"
 source "$HELPERS_DIR/logging_utils.bash"
 source "$HELPERS_DIR/helpers.bash"
 arrbitPurgeOldLogs 3
