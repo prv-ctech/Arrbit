@@ -36,7 +36,6 @@ if curl -s https://raw.githubusercontent.com/prv-ctech/Arrbit/refs/heads/develop
     fi
 else
     log_error "setup.bash failed"
-    log_info "Sleeping indefinitely after setup failure"
     sleep infinity
 fi
 

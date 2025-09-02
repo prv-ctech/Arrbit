@@ -115,4 +115,4 @@ mkdir -p "$ARRBIT_BASE/environments/tdarr"
 rm -rf "$TMP_DIR"
 
 log_info "Tdarr setup completed successfully"
-# Note: Do not exit when run via curl | bash to prevent pipeline termination
+exit 0

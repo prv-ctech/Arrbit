@@ -104,3 +104,4 @@ chmod -R 777 "$AI_ENV_DIR" || { log_error "Failed to set final permissions"; exi
 
 log_info "AI Language Detection dependencies installation completed successfully"
 arrbitBanner "Dependencies Setup Complete" "$SCRIPT_VERSION"
+exit 0
