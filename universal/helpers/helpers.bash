@@ -82,5 +82,3 @@ joinBy() {
   done
   printf '%s' "$out"
 }
-
-fi
