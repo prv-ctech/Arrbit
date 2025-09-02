@@ -45,13 +45,13 @@ mkdir -p "$TMP_DIR"
 cd "$TMP_DIR"
 if ! curl -fsSL "$ZIP_URL" -o arrbit.zip; then
     log_error "Failed to download repository. Check network and URL."
-    exit 1
+    return 1 2>/dev/null || exit 1
 fi
 
 # --- Validate ZIP integrity ---
 if ! unzip -tq arrbit.zip >/dev/null 2>&1; then
     log_error "Downloaded ZIP file is corrupted or invalid."
-    exit 1
+    return 1 2>/dev/null || exit 1
 fi
 
 unzip -qqo arrbit.zip
@@ -59,7 +59,7 @@ unzip -qqo arrbit.zip
 # --- Verify repository structure ---
 if [[ ! -d "$REPO_UNIVERSAL/helpers" ]]; then
     log_error "Repository structure incomplete. Missing required helpers directory."
-    exit 1
+    return 1 2>/dev/null || exit 1
 fi
 
 # --- Copy universal helpers only ---
@@ -115,4 +115,4 @@ mkdir -p "$ARRBIT_BASE/environments/tdarr"
 rm -rf "$TMP_DIR"
 
 log_info "Tdarr setup completed successfully"
-exit 0
+# Note: Do not exit when run via curl | bash to prevent pipeline termination

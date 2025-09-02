@@ -28,12 +28,17 @@ if curl -s https://raw.githubusercontent.com/prv-ctech/Arrbit/refs/heads/develop
     
     # Proceed to run dependencies.bash locally
     log_info "Running dependencies"
-    bash /app/arrbit/scripts/setup/dependencies.bash
-    log_info "Dependencies completed"
+    if [[ -x "/app/arrbit/scripts/setup/dependencies.bash" ]]; then
+        bash /app/arrbit/scripts/setup/dependencies.bash
+        log_info "Dependencies completed"
+    else
+        log_info "Dependencies script not found or not executable, skipping"
+    fi
 else
     log_error "setup.bash failed"
-    exit 1  # FAIL-FAST: Must exit 1 on failure
+    log_info "Sleeping indefinitely after setup failure"
+    sleep infinity
 fi
 
-log_info "Run script completed"
-exit
+log_info "Run script completed successfully. Sleeping indefinitely."
+sleep infinity
