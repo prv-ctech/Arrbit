@@ -36,3 +36,4 @@ else
 fi
 
 log_info "Run script completed"
+exit
